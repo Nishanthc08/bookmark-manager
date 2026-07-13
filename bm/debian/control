@@ -1,0 +1,17 @@
+Source: bm
+Section: utils
+Priority: optional
+Maintainer: nishu <nishu@example.com>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.6.2
+
+Package: bm
+Architecture: all
+Depends: bash (>= 4.0)
+Description: directory bookmark manager for the command line
+ Bookmark directories and quickly jump between them.
+ Features:
+  * Add named bookmarks for current directory
+  * Jump to bookmarked directories
+  * List, search, and remove bookmarks
+  * Persistent storage in ~/.config/bm/bookmarks

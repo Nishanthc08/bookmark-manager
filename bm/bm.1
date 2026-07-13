@@ -1,0 +1,41 @@
+.TH BM 1 "2026-07-13" "bm 1.0.0" "User Commands"
+.SH NAME
+bm \- directory bookmark manager
+.SH SYNOPSIS
+.B bm add \fIname\fR
+.br
+.B bm go \fIname\fR
+.br
+.B bm list
+.br
+.B bm del \fIname\fR
+.br
+.B bm path \fIname\fR
+.br
+.B bm help
+.SH DESCRIPTION
+Bookmark directories and navigate between them quickly.
+Bookmarks are stored persistently in ~/.config/bm/bookmarks.
+.SH COMMANDS
+.TP
+.B add \fIname\fR
+Bookmark the current directory as \fIname\fR.
+.TP
+.B go \fIname\fR
+Print the path of a bookmarked directory (use with cd: cd $(bm go name)).
+.TP
+.B list
+List all bookmarks with their paths.
+.TP
+.B del \fIname\fR
+Remove the specified bookmark.
+.TP
+.B path \fIname\fR
+Print the path of a bookmark (same as go).
+.TP
+.B help
+Display this help message.
+.SH FILES
+~/.config/bm/bookmarks
+.SH AUTHOR
+nishu <nishu@example.com>

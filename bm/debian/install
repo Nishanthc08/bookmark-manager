@@ -1,0 +1,3 @@
+bm usr/bin
+bm.1 usr/share/man/man1
+bash-completion/bm usr/share/bash-completion/completions
