@@ -2,42 +2,79 @@
 
 Bookmark directories from the command line and jump between them instantly.
 
-## Quick Start
+## Features
+
+- Add named bookmarks for any directory
+- Jump to bookmarked directories with a single command
+- List, search, and remove bookmarks
+- Tab completion for bookmark names
+- Automatic `cd` on `bm go` — no `cd $(...)` needed
+- Persistent storage in `~/.config/bm/bookmarks`
+
+## Install
+
+### From the .deb
 
 ```sh
-# Build the package
+sudo apt install ./bm_*.deb
+```
+
+### From source
+
+```sh
 sudo apt install debhelper
 dpkg-buildpackage -us -uc
-
-# Install
 sudo apt install ./../bm_*.deb
+```
 
-# Use it
-bm add myproject       # bookmark current dir
-bm go myproject        # jump to bookmarked dir
-bm ls                  # list bookmarks
+## Usage
+
+```sh
+bm add myproject       # bookmark current directory
+bm go myproject        # jump to bookmarked directory (cd's automatically)
+bm ls                  # list all bookmarks
+bm path myproject      # print path without cd
 bm del myproject       # remove bookmark
+bm help                # show help
 ```
 
 ## Shell Integration
 
-By default `bm go <name>` prints the path — you need `cd $(bm go name)`.
-After installing the package, `bm go <name>` directly changes your directory
-(uses `cd` automatically) — no manual setup needed.
+`bm go <name>` changes your directory automatically — no manual `~/.bashrc` edits needed.
 
-Login shells auto-load via `/etc/profile.d/bm.sh`.
-Non-login shells are wired through `/etc/bash.bashrc` during install.
+| Mechanism | Applies to |
+|-----------|------------|
+| `/etc/profile.d/bm.sh` | Login shells (SSH, tty, `su -`) |
+| `/etc/bash.bashrc` | Non-login shells (most terminals) |
 
-## Commands
+## Building
 
-| Command | Description |
-|---------|-------------|
-| `bm add <name>` | Bookmark current directory as `<name>` |
-| `bm go <name>` | Jump to bookmarked directory (with shell integration) |
-| `bm list` / `bm ls` | List all bookmarks |
-| `bm del <name>` / `bm rm <name>` | Remove a bookmark |
-| `bm path <name>` | Print path of a bookmark |
-| `bm help` | Show help |
+### With debhelper (recommended)
+
+```sh
+sudo apt install debhelper
+make build
+```
+
+### Without debhelper
+
+```sh
+./build.sh
+```
+
+Output: `../bm_1.0.0_all.deb`
+
+## Package Structure
+
+```
+.
+├── bm                    # the CLI tool
+├── bm.1                  # man page
+├── bm.sh                 # shell function (sourced by profile.d)
+├── bash-completion/      # tab completion
+├── etc/profile.d/        # login shell integration
+└── debian/               # packaging files
+```
 
 ## License
 
