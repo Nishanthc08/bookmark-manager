@@ -1,3 +1,5 @@
 bm usr/bin
 bm.1 usr/share/man/man1
 bash-completion/bm usr/share/bash-completion/completions
+bm.sh usr/share/bm
+etc/profile.d/bm.sh etc/profile.d
