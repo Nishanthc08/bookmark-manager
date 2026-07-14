@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  configure)
+    if [ -f /etc/bash.bashrc ]; then
+      if ! grep -q "BEGIN bm shell integration" /etc/bash.bashrc; then
+        cat >> /etc/bash.bashrc << 'EOM'
+
+# BEGIN bm shell integration
+if [ -f /usr/share/bm/bm.sh ]; then
+  . /usr/share/bm/bm.sh
+fi
+# END bm shell integration
+EOM
+      fi
+    fi
+    ;;
+esac

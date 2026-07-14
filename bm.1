@@ -16,13 +16,15 @@ bm \- directory bookmark manager
 .SH DESCRIPTION
 Bookmark directories and navigate between them quickly.
 Bookmarks are stored persistently in ~/.config/bm/bookmarks.
+.PP
+For seamless directory jumping, source /usr/share/bm/bm.sh in your shell.
 .SH COMMANDS
 .TP
 .B add \fIname\fR
 Bookmark the current directory as \fIname\fR.
 .TP
 .B go \fIname\fR
-Print the path of a bookmarked directory (use with cd: cd $(bm go name)).
+Jump to a bookmarked directory. With shell integration sourced, this runs cd directly.
 .TP
 .B list
 List all bookmarks with their paths.

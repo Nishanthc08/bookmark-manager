@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+
+case "$1" in
+  remove|purge)
+    if [ -f /etc/bash.bashrc ]; then
+      sed -i '/^# BEGIN bm shell integration$/,/^# END bm shell integration$/d' /etc/bash.bashrc
+    fi
+    ;;
+esac
