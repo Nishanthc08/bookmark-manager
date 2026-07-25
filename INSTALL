@@ -1,0 +1,51 @@
+bm - Directory Bookmark Manager
+================================
+
+INSTALL
+-------
+
+1. Download the .deb from Releases or build from source.
+
+2. Install:
+     sudo dpkg -i bm_1.0.0_all.deb
+
+3. Open a new terminal and start using it:
+     bm add myproject
+     bm go myproject
+     bm ls
+
+REMOVE
+------
+
+     sudo dpkg --purge bm
+
+Verify clean removal:
+     dpkg -l | grep bm       # should return nothing
+     ls /etc/profile.d/bm.sh  # should not exist
+     grep bm ~/.bashrc       # should return nothing
+
+BUILD FROM SOURCE
+-----------------
+
+     sudo apt install debhelper
+     dpkg-buildpackage -us -uc
+
+Or without debhelper:
+     bash build.sh
+
+REQUIREMENTS
+------------
+
+- Ubuntu 18.04+ or any Debian-based system
+- bash 4.0+
+- No other dependencies
+
+FILES
+-----
+
+/usr/bin/bm                    - the bookmark manager
+/usr/share/man/man1/bm.1.gz    - man page
+/usr/share/bm/bm.sh            - shell integration function
+/usr/share/bash-completion/completions/bm - tab completion
+/etc/profile.d/bm.sh           - login shell integration
+~/.config/bm/bookmarks         - your bookmarks (created on first use)

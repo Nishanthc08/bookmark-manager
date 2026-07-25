@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "bm autopkgtest: basic smoke test"
+
+# Verify binary exists
+which bm || { echo "FAIL: bm not found"; exit 1; }
+
+# Verify help works
+bm help | grep -q "Usage:" || { echo "FAIL: help output broken"; exit 1; }
+
+# Verify shell integration file exists
+[ -f /usr/share/bm/bm.sh ] || { echo "FAIL: bm.sh not found"; exit 1; }
+
+# Verify man page
+man -w bm >/dev/null 2>&1 || { echo "FAIL: man page missing"; exit 1; }
+
+echo "PASS: all checks passed"
