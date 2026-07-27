@@ -30,7 +30,7 @@ else
 
   cp debian/postinst "$DEST/DEBIAN/"
   cp debian/prerm "$DEST/DEBIAN/"
-  cp debian/conffiles "$DEST/DEBIAN/"
+  echo "/etc/profile.d/bm.sh" > "$DEST/DEBIAN/conffiles"
 
   dpkg-gencontrol -P"$DEST"
   dpkg-deb --root-owner-group --build "$DEST" ..
