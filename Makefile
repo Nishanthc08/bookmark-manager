@@ -1,4 +1,4 @@
-.PHONY: build clean install
+.PHONY: build clean install-deb
 
 PACKAGE := bm
 
@@ -8,5 +8,5 @@ build:
 clean:
 	dpkg-buildpackage -Tclean
 
-install:
+install-deb:
 	sudo apt install ./../$(PACKAGE)_*.deb
